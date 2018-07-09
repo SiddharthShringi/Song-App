@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Song, Artist, Genre, Playlist
+from .forms import SongForm
 
 
 def home(request):
@@ -41,3 +42,15 @@ def playlist_song(request, pk):
     playlists = Playlist.objects.all().order_by('name')
     songs = playlist.song.all()
     return render(request, 'songfy/playlist_song.html', {'songs': songs, 'playlists': playlists})
+
+
+def add_song(request):
+    if request.method == 'POST':
+        form = SongForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    else:
+        form = SongForm()
+    return render(request, 'songfy/add_edit_song.html', {'form': form})
