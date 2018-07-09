@@ -1,0 +1,17 @@
+{% extends 'songfy/base.html' %}
+{% block content %}
+<table>
+    <th scope="col">Song</th>
+    <th scope="col">Genre</th>
+    <th scope="col">Artist</th>
+    <th scope="col">Duration</th>
+    {% for song in songs %}
+     <tr>
+        <td>{{ song.title }}</td>
+        <td>{{ song.genre }}</td>
+        <td>{{ song.artist }}</td>
+        <td>{{ song.duration}}</td>
+     </tr>
+     {% endfor %}
+</table>
+{% endblock %}

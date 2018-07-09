@@ -1,0 +1,42 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Songfy</title>
+    <link rel="stylesheet" href="{% static 'css/songfy.css' %}">
+</head>
+<body>
+    <header class="container group">
+        <section>
+            <a href="{% url 'songfy:home' %}">
+                <h1 class="logo">Songfy</h1>
+            </a>
+        </section>
+        <h3>Organise Your Song Collection</h3>
+        <section>
+             <nav>
+                <a href="{% url 'songfy:home' %}">Home</a>
+                <a href="{% url 'songfy:artist_lst' %}">Artists</a>
+                <a href="{% url 'songfy:genre_lst' %}">Genres</a>
+                <a href="{% url 'songfy:playlist_lst' %}">Playlists</a>
+            </nav>
+        </section>
+    </header>
+    <section class="table container">
+        {% block content %}
+        {% endblock %}
+    </section>
+    <footer class="container">
+        <small>&copy; Songfy</small>
+        <section>
+            <nav>
+                <a href="{% url 'songfy:home' %}">Home</a>
+                <a href="{% url 'songfy:artist_lst' %}">Artists</a>
+                <a href="{% url 'songfy:genre_lst' %}">Genres</a>
+                <a href="{% url 'songfy:playlist_lst' %}">Playlists</a>
+            </nav>
+        </section>
+    </footer>
+</body>
+</html>

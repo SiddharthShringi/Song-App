@@ -1,0 +1,13 @@
+{% extends 'songfy/base.html' %}
+{% block content %}
+<ul>
+	{% for genre in genres %}
+		<li><a href="{% url 'songfy:genre_song' genre.id %}">{{ genre.name }}</a></li>
+	{% endfor %}
+</ul>
+<ul>
+	{% for song in songs %}
+		<li>{{ song }}</li>
+	{% endfor %}
+</ul>
+{% endblock %}
