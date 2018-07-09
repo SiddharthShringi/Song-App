@@ -20,8 +20,8 @@ class Artist(models.Model):
 class Song(models.Model):
     title = models.CharField(max_length=50)
     duration = models.DurationField()
-    genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
-    artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE, related_name='songs')
+    artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name='songs')
 
     def __str__(self):
         return self.title
