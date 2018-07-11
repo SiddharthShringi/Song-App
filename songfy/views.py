@@ -8,6 +8,11 @@ def home(request):
     return render(request, 'songfy/home.html', {'songs': songs})
 
 
+def song_detail(request, pk):
+    song = get_object_or_404(Song, pk=pk)
+    return render(request, 'songfy/song_detail.html', {'song': song})
+
+
 def artist_lst(request):
     artists = Artist.objects.all().order_by('name')
     return render(request, 'songfy/artist.html', {'artists': artists})
