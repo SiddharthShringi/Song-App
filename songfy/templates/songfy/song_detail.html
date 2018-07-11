@@ -5,4 +5,6 @@
 	<p>Artist: {{ song.artist }}</p>
 	<p>Genre: {{ song.genre }}</p>
 	<p>Duration: {{ song.duration }}</p>
+</div>
+<a href="{% url 'songfy:edit_song' song.id %}">Edit</a>
 {% endblock %}
