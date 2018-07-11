@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Song, Artist, Genre, Playlist
-from .forms import SongForm, ArtistForm, GenreForm
+from .forms import SongForm, ArtistForm, GenreForm, PlaylistForm
 
 
 def home(request):
@@ -92,4 +92,15 @@ def add_genre(request):
             return redirect('/genres')
     else:
         form = GenreForm()
-        return render(request, 'songfy/add_genre.html', {'form': form})
+    return render(request, 'songfy/add_genre.html', {'form': form})
+
+
+def add_playlist(request):
+    if request.method == "POST":
+        form = PlaylistForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/playlists')
+    else:
+        form = PlaylistForm()
+    return render(request, 'songfy/add_playlist.html', {'form': form})
