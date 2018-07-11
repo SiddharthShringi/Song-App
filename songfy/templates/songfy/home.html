@@ -7,7 +7,7 @@
     <th scope="col">Duration</th>
     {% for song in songs %}
      <tr>
-        <td>{{ song.title }}</td>
+        <td><a href="{ url 'songfy:song_detail' }">{{ song.title }}</a></td>
         <td>{{ song.genre }}</td>
         <td>{{ song.artist }}</td>
         <td>{{ song.duration}}</td>
