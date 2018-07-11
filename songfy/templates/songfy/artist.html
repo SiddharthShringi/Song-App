@@ -5,4 +5,5 @@
 		<li><a href="{% url 'songfy:artist_song' artist.id %}">{{ artist.name }}</a></li>
 	{% endfor %}
 </ul>
+<a href="{% url 'songfy:add_artist' %}">Add New</a>
 {% endblock %}
