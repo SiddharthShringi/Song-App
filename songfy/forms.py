@@ -21,3 +21,10 @@ class GenreForm(forms.ModelForm):
     class Meta:
         model = Genre
         fields = ('name', )
+
+
+class PlaylistForm(forms.ModelForm):
+
+    class Meta:
+        model = Playlist
+        fields = ('name', 'song')
