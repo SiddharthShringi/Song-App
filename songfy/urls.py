@@ -5,6 +5,7 @@ app_name = 'songfy'
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('song/<int:pk>', views.song_detail, name='song_detail'),
     path('artists', views.artist_lst, name='artist_lst'),
     path('genres', views.genre_lst, name='genre_lst'),
     path('playlists', views.playlist_lst, name='playlist_lst'),
