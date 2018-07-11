@@ -1,5 +1,5 @@
 from django import forms
-from .models import Song, Artist
+from .models import Song, Artist, Genre, Playlist
 
 
 class SongForm(forms.ModelForm):
@@ -13,4 +13,11 @@ class ArtistForm(forms.ModelForm):
 
     class Meta:
         model = Artist
+        fields = ('name', )
+
+
+class GenreForm(forms.ModelForm):
+
+    class Meta:
+        model = Genre
         fields = ('name', )
