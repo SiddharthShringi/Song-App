@@ -15,4 +15,5 @@ urlpatterns = [
     path('song/new', views.add_song, name='add_song'),
     path('song/edit/<int:pk>', views.edit_song, name='edit_song'),
     path('artist/new', views.add_artist, name="add_artist"),
+    path('genre/new' views.add_genre, name='add_genre'),
 ]
