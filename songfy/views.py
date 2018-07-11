@@ -75,10 +75,10 @@ def edit_song(request, pk):
 
 def add_artist(request):
     if request.method == "POST":
-        form = ArtistForm(request.post)
+        form = ArtistForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/artists/')
+            return redirect('/artists')
     else:
         form = ArtistForm()
     return render(request, 'songfy/add_artist.html', {'form': form})
