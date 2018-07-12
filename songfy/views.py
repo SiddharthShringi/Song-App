@@ -104,3 +104,9 @@ def add_playlist(request):
     else:
         form = PlaylistForm()
     return render(request, 'songfy/add_playlist.html', {'form': form})
+
+
+def song_delete(request, pk):
+    song = get_object_or_404(Song, pk=pk)
+    song.delete()
+    return redirect('/')
