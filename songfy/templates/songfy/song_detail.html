@@ -7,4 +7,5 @@
 	<p>Duration: {{ song.duration }}</p>
 </div>
 <a href="{% url 'songfy:edit_song' song.id %}">Edit</a>
+<a href="{% url 'songfy:song_delete' song.id %}">Delete</a>
 {% endblock %}
