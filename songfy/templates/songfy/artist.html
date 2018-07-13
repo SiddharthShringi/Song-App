@@ -3,6 +3,7 @@
 <ul>
 	{% for artist in artists %}
 		<li><a href="{% url 'songfy:artist_song' artist.id %}">{{ artist.name }}</a></li>
+		<a href="{% url 'songfy:artist_delete' artist.id %}">Delete</a>
 	{% endfor %}
 </ul>
 <a href="{% url 'songfy:add_artist' %}">Add New</a>
