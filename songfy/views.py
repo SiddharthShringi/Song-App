@@ -122,3 +122,9 @@ def genre_delete(request, pk):
     genre = get_object_or_404(Genre, pk=pk)
     genre.delete()
     return redirect('/genres')
+
+
+def playlist_delete(request, pk):
+    playlist = get_object_or_404(Playlist, pk=pk)
+    playlist.delete()
+    return redirect('/playlists')
