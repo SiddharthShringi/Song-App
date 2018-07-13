@@ -3,6 +3,7 @@
 <ul>
 	{% for playlist in playlists %}
 		<li><a href="{% url 'songfy:playlist_song' playlist.id %}">{{ playlist.name }}</a></li>
+		<a href="{% url 'songfy:playlist_delete' playlist.id %}">Delete</a>
 	{% endfor %}
 </ul>
 <a href="{% url 'songfy:add_playlist' %}">Make New</a>
