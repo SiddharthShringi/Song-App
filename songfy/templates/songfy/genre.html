@@ -3,6 +3,7 @@
 <ul>
 	{% for genre in genres %}
 		<li><a href="{% url 'songfy:genre_song' genre.id %}">{{ genre.name }}</a></li>
+		<a href="{% url 'songfy:genre_delete' genre.id %}">Delete</a>
 	{% endfor %}
 </ul>
 <a href="{% url 'songfy:add_genre' %}">Add New</a>
