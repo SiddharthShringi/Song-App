@@ -116,3 +116,9 @@ def artist_delete(request, pk):
     artist = get_object_or_404(Artist, pk=pk)
     artist.delete()
     return redirect('/artists')
+
+
+def genre_delete(request, pk):
+    genre = get_object_or_404(Genre, pk=pk)
+    genre.delete()
+    return redirect('/genres')
