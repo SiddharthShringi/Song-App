@@ -58,7 +58,7 @@ table {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
-.container {
+.custom-container {
   margin: 0 auto;
   padding-left: 30px;
   padding-right: 30px;

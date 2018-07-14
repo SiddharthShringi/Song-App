@@ -3,11 +3,13 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Songfy</title>
     <link rel="stylesheet" href="{% static 'css/songfy.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 </head>
 <body>
-    <header class="container group">
+    <header>
         <section>
             <a href="{% url 'songfy:home' %}">
                 <h1 class="logo">Songfy</h1>
@@ -23,11 +25,9 @@
             </nav>
         </section>
     </header>
-    <section class="table container">
-        {% block content %}
-        {% endblock %}
-    </section>
-    <footer class="container">
+    {% block content %}
+    {% endblock %}
+    <footer>
         <small>&copy; Songfy</small>
         <section>
             <nav>
