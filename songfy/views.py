@@ -29,24 +29,21 @@ def playlist_lst(request):
 
 
 def artist_song(request, pk):
-    artist = get_object_or_404(Artist, pk=pk)
+    artist_obj = get_object_or_404(Artist, pk=pk)
     artists = Artist.objects.all().order_by('name')
-    songs = artist.songs.all()
-    return render(request, 'songfy/artist_song.html', {'songs': songs, 'artists': artists})
+    return render(request, 'songfy/artist_song.html', {'artist_obj': artist_obj, 'artists': artists})
 
 
 def genre_song(request, pk):
-    genre = get_object_or_404(Genre, pk=pk)
+    genre_obj = get_object_or_404(Genre, pk=pk)
     genres = Genre.objects.all().order_by('name')
-    songs = genre.songs.all()
-    return render(request, 'songfy/genre_song.html', {'songs': songs, 'genres': genres})
+    return render(request, 'songfy/genre_song.html', {'genre_obj': genre_obj, 'genres': genres})
 
 
 def playlist_song(request, pk):
-    playlist = get_object_or_404(Playlist, pk=pk)
+    playlist_obj = get_object_or_404(Playlist, pk=pk)
     playlists = Playlist.objects.all().order_by('name')
-    songs = playlist.song.all()
-    return render(request, 'songfy/playlist_song.html', {'songs': songs, 'playlists': playlists})
+    return render(request, 'songfy/playlist_song.html', {'playlist_obj': playlist_obj, 'playlists': playlists})
 
 
 def add_song(request):

@@ -1,15 +1,36 @@
 {% extends 'songfy/base.html' %}
 {% block content %}
+<br/>
 <div class="container">
-	<ul>
-		{% for genre in genres %}
-			<li><a href="{% url 'songfy:genre_song' genre.id %}">{{ genre.name }}</a></li>
-		{% endfor %}
-	</ul>
-	<ul>
-		{% for song in songs %}
-			<li>{{ song }}</li>
-		{% endfor %}
-	</ul>
+	<div class="row">
+	  <div class="col-3">
+	  	<h2>Artists</h2>
+	    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+	    	{% for genre in genres %}
+	    		<a class="nav-link {% if genre.id == genre_obj.id %}active bg-warning{% endif %}" id="v-pills-home-tab" data-toggle="pill" href="{% url 'songfy:genre_song' genre.id %}" role="tab" aria-controls="v-pills-home" aria-selected="true">{{ genre.name }}</a>
+	    	{% endfor %}
+	    </div>
+	  </div>
+	  <div class="col-9">
+	    <div class="tab-content" id="v-pills-tabContent">
+	      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+	      	<table class="table">
+	      		<thead>
+		      		<tr>
+		      			<th scope="col">Songs</th>
+		      		</tr>
+	      		</thead>
+	      		<tbody>
+	      		{% for song in genre_obj.songs.all %}
+	      			<tr>
+	      				<td>{{ song }}</td>
+	      			</tr>
+	      		{% endfor %}
+	      		</tbody>
+	      	</table>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </div>
 {% endblock %}
