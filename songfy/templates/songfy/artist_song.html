@@ -1,13 +1,15 @@
 {% extends 'songfy/base.html' %}
 {% block content %}
-<ul>
-	{% for artist in artists %}
-		<li><a href="{% url 'songfy:artist_song' artist.id %}">{{ artist.name }}</a></li>
-	{% endfor %}
-</ul>
-<ul>
-	{% for song in songs %}
-		<li>{{ song }}</li>
-	{% endfor %}
-</ul>
+<div class="container">
+	<ul>
+		{% for artist in artists %}
+			<li><a href="{% url 'songfy:artist_song' artist.id %}">{{ artist.name }}</a></li>
+		{% endfor %}
+	</ul>
+	<ul>
+		{% for song in songs %}
+			<li>{{ song }}</li>
+		{% endfor %}
+	</ul>
+</div>
 {% endblock %}

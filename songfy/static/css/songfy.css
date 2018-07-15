@@ -58,7 +58,8 @@ table {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
-.custom-container {
+.custom-
+container {
   margin: 0 auto;
   padding-left: 30px;
   padding-right: 30px;
@@ -91,3 +92,54 @@ table {
 h1, h3, .table {
   margin-bottom: 22px;
 }
+.btn-primary {
+  background-color: orange;
+  border-color: #ffffff;
+}
+.btn-primary a {
+
+  color: white;
+}
+
+.full-page-wrapper {
+  background: #f12711;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #f5af19, #f12711);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #f5af19, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  background: #F1F2B5;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #135058, #F1F2B5);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #135058, #F1F2B5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  height: 100%;
+}
+
+body a {
+  color: #fff;
+  
+}
+
+body a:hover {
+  color: black;
+  text-decoration: none;
+}
+body, html {
+  height: 100%;
+}
+
+.artist {
+float: right;
+}
+.table td, .table th {
+  border-top: 0.1px solid #f7f7f7;
+}
+.table {
+  float: right;
+}
+
+.delete a {
+color: #4f626b;
+}
+.delete a:hover {
+  color: #19535a;
+}
+

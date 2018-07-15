@@ -5,38 +5,62 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Songfy</title>
-    <link rel="stylesheet" href="{% static 'css/songfy.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/songfy.css' %}">
 </head>
 <body>
-    <header>
-        <section>
-            <a href="{% url 'songfy:home' %}">
-                <h1 class="logo">Songfy</h1>
-            </a>
-        </section>
-        <h3>Organise Your Song Collection</h3>
-        <section>
-             <nav>
-                <a href="{% url 'songfy:home' %}">Home</a>
-                <a href="{% url 'songfy:artist_lst' %}">Artists</a>
-                <a href="{% url 'songfy:genre_lst' %}">Genres</a>
-                <a href="{% url 'songfy:playlist_lst' %}">Playlists</a>
-            </nav>
-        </section>
-    </header>
-    {% block content %}
-    {% endblock %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{% url 'songfy:home' %}">Songfy</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'songfy:home' %}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'songfy:artist_lst' %}">Artists</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'songfy:genre_lst' %}">Genres</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="{% url 'songfy:playlist_lst' %}">Playlists</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    Organise Your Song Collection
+                </span>
+            </div>
+        </nav>
+        <div class="full-page-wrapper">
+            {% block content %}
+            {% endblock %}
+        </div>
     <footer>
-        <small>&copy; Songfy</small>
-        <section>
-            <nav>
-                <a href="{% url 'songfy:home' %}">Home</a>
-                <a href="{% url 'songfy:artist_lst' %}">Artists</a>
-                <a href="{% url 'songfy:genre_lst' %}">Genres</a>
-                <a href="{% url 'songfy:playlist_lst' %}">Playlists</a>
-            </nav>
-        </section>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'songfy:home' %}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'songfy:artist_lst' %}">Artists</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'songfy:genre_lst' %}">Genres</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="{% url 'songfy:playlist_lst' %}">Playlists</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    <small>&copy; Songfy</small>
+                </span>
+            </div>
+        </nav>
     </footer>
 </body>
 </html>

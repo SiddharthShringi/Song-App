@@ -1,10 +1,20 @@
 {% extends 'songfy/base.html' %}
 {% block content %}
-<ul>
-	{% for playlist in playlists %}
-		<li><a href="{% url 'songfy:playlist_song' playlist.id %}">{{ playlist.name }}</a></li>
-		<a href="{% url 'songfy:playlist_delete' playlist.id %}">Delete</a>
-	{% endfor %}
-</ul>
-<a href="{% url 'songfy:add_playlist' %}">Make New</a>
+<div class="container">
+		<table class="table">
+			{% for playlist in playlists %}
+				<tr>
+					<td>
+						<a href="{% url 'songfy:playlist_song' playlist.id %}">{{ playlist.name }}</a>
+					</td>
+					<td  class="delete" align="right">
+						<a href="{% url 'songfy:playlist_delete' playlist.id %}">Delete</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+		<button type="button" class="btn btn-primary">
+			<a href="{% url 'songfy:add_playlist' %}">Make New</a>
+		</button>
+</div>
 {% endblock %}
