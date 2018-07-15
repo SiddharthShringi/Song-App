@@ -23,7 +23,7 @@
 	      		<tbody>
 	      		{% for song in artist_obj.songs.all %}
 	      			<tr>
-	      				<td>{{ song }}</td>
+	      				<td><a href="{% url 'songfy:song_detail' song.id %}">{{ song }}</a></td>
 	      			</tr>
 	      		{% endfor %}
 	      		</tbody>

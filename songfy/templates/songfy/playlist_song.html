@@ -23,12 +23,15 @@
 	      		<tbody>
 	      		{% for song in playlist_obj.song.all %}
 	      			<tr>
-	      				<td>{{ song }}</td>
+	      				<td><a href="{% url 'songfy:song_detail' song.id %}">{{ song }}</a></td>
 	      			</tr>
 	      		{% endfor %}
 	      		</tbody>
 	      	</table>
 	      </div>
+	      <button type="button" class="btn  bg-warning btn-primary">
+	      	<a href="{% url 'songfy:edit_playlist' playlist_obj.id %}">Add Song</a>
+	      </button>
 	    </div>
 	  </div>
 	</div>
