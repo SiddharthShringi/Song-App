@@ -64,7 +64,7 @@ def edit_song(request, pk):
         form = SongForm(request.POST, instance=song)
         if form.is_valid():
             form.save()
-            return redirect('/song/' + str(song.pk))
+            return redirect('songfy:song_detail', pk=song.id)
     else:
         form = SongForm(instance=song)
     return render(request, 'songfy/add_edit_song.html', {'form': form})
@@ -100,6 +100,18 @@ def add_playlist(request):
             return redirect('/playlists')
     else:
         form = PlaylistForm()
+    return render(request, 'songfy/add_playlist.html', {'form': form})
+
+
+def edit_playlist(request, pk):
+    playlist = get_object_or_404(Playlist, pk=pk)
+    if request.method == "POST":
+        form = PlaylistForm(request.POST, instance=playlist)
+        if form.is_valid():
+            form.save()
+            return redirect('songfy:playlist_song', pk=playlist.id)
+    else:
+        form = PlaylistForm(instance=playlist)
     return render(request, 'songfy/add_playlist.html', {'form': form})
 
 
