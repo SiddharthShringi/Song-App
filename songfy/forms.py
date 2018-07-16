@@ -28,3 +28,4 @@ class PlaylistForm(forms.ModelForm):
     class Meta:
         model = Playlist
         fields = ('name', 'song')
+        widgets = {'song': forms.CheckboxSelectMultiple}
