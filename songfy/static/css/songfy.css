@@ -142,3 +142,6 @@ color: #4f626b;
   color: #19535a;
 }
 
+.loginout a {
+  color: rgba(0,0,0,.5);
+}

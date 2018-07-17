@@ -19,5 +19,6 @@ from django.conf.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('songfy.urls', namespace='songfy'))
+    path('', include('songfy.urls', namespace='songfy')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

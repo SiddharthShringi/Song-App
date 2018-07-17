@@ -30,9 +30,20 @@
                         <a class="nav-link disabled" href="{% url 'songfy:playlist_lst' %}">Playlists</a>
                     </li>
                 </ul>
+                <div class="loginout">
+                {% if user.is_authenticated %}
+                    <span>
+                        <p>Hello {{ user.username }}!<small><a href="{% url 'logout' %}">Logout</a></small></p>
+                    </span>
+                {% else %}
+                    <span>
+                        <small><a href="{% url 'login' %}">Login</a></small>
+                    </span>
+                {% endif %}
                 <span class="navbar-text">
                     Organise Your Song Collection
                 </span>
+                </div>
             </div>
         </nav>
         <div class="full-page-wrapper">

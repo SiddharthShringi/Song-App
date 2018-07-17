@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Song, Artist, Genre, Playlist
 from .forms import SongForm, ArtistForm, GenreForm, PlaylistForm
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -46,6 +47,7 @@ def playlist_song(request, pk):
     return render(request, 'songfy/playlist_song.html', {'playlist_obj': playlist_obj, 'playlists': playlists})
 
 
+@login_required
 def add_song(request):
     if request.method == 'POST':
         form = SongForm(request.POST)
@@ -58,6 +60,7 @@ def add_song(request):
     return render(request, 'songfy/add_edit_song.html', {'form': form})
 
 
+@login_required
 def edit_song(request, pk):
     song = get_object_or_404(Song, pk=pk)
     if request.method == 'POST':
@@ -70,6 +73,7 @@ def edit_song(request, pk):
     return render(request, 'songfy/add_edit_song.html', {'form': form})
 
 
+@login_required
 def add_artist(request):
     if request.method == "POST":
         form = ArtistForm(request.POST)
@@ -81,6 +85,7 @@ def add_artist(request):
     return render(request, 'songfy/add_artist.html', {'form': form})
 
 
+@login_required
 def add_genre(request):
     if request.method == "POST":
         form = GenreForm(request.POST)
@@ -92,6 +97,7 @@ def add_genre(request):
     return render(request, 'songfy/add_genre.html', {'form': form})
 
 
+@login_required
 def add_playlist(request):
     if request.method == "POST":
         form = PlaylistForm(request.POST)
@@ -103,6 +109,7 @@ def add_playlist(request):
     return render(request, 'songfy/add_playlist.html', {'form': form})
 
 
+@login_required
 def edit_playlist(request, pk):
     playlist = get_object_or_404(Playlist, pk=pk)
     if request.method == "POST":
@@ -115,24 +122,28 @@ def edit_playlist(request, pk):
     return render(request, 'songfy/add_playlist.html', {'form': form})
 
 
+@login_required
 def song_delete(request, pk):
     song = get_object_or_404(Song, pk=pk)
     song.delete()
     return redirect('/')
 
 
+@login_required
 def artist_delete(request, pk):
     artist = get_object_or_404(Artist, pk=pk)
     artist.delete()
     return redirect('/artists')
 
 
+@login_required
 def genre_delete(request, pk):
     genre = get_object_or_404(Genre, pk=pk)
     genre.delete()
     return redirect('/genres')
 
 
+@login_required
 def playlist_delete(request, pk):
     playlist = get_object_or_404(Playlist, pk=pk)
     playlist.delete()

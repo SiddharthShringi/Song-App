@@ -1,11 +1,17 @@
 {% extends 'songfy/base.html' %}
 {% block content %}
-<div class='detail'>
-	<h5>Title {{ song.title }}</h5>
-	<p>Artist {{ song.artist }}</p>
-	<p>Genre {{ song.genre }}</p>
-	<p>Duration {{ song.duration }}</p>
+<div class='container'>
+	<div class="row">
+		<div class="col-6">
+			<h5>Title {{ song.title }}</h5>
+			<p>Artist {{ song.artist }}</p>
+			<p>Genre {{ song.genre }}</p>
+			<p>Duration {{ song.duration }}</p>
+			<a href="{% url 'songfy:edit_song' song.id %}">Edit</a>
+			<a href="{% url 'songfy:song_delete' song.id %}">Delete</a>
+		</div>
+		
+	</div>
 </div>
-<a href="{% url 'songfy:edit_song' song.id %}">Edit</a>
-<a href="{% url 'songfy:song_delete' song.id %}">Delete</a>
+
 {% endblock %}
