@@ -37,8 +37,13 @@
                     </span>
                 {% else %}
                     <span>
-                        <small><a href="{% url 'login' %}">Login</a></small>
+                        <small>
+                            <p>
+                            <a href="{% url 'login' %}">Login</a>/<a href="{% url 'songfy:signup' %}">Signup</a>
+                            </p>
+                        </small>
                     </span>
+
                 {% endif %}
                 <span class="navbar-text">
                     Organise Your Song Collection
