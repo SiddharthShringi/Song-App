@@ -22,4 +22,5 @@ urlpatterns = [
     path('artist/<int:pk>/delete', views.artist_delete, name='artist_delete'),
     path('genre/<int:pk>/delete', views.genre_delete, name='genre_delete'),
     path('playlist/<int:pk>/delete', views.playlist_delete, name='playlist_delete'),
+    path('signup', views.signup, name='signup')
 ]

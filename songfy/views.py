@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Song, Artist, Genre, Playlist
 from .forms import SongForm, ArtistForm, GenreForm, PlaylistForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate
 
 
 def home(request):
@@ -148,3 +150,18 @@ def playlist_delete(request, pk):
     playlist = get_object_or_404(Playlist, pk=pk)
     playlist.delete()
     return redirect('/playlists')
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('/')
+    else:
+        form = UserCreationForm()
+    return render(request, 'songfy/signup.html', {'form': form})
