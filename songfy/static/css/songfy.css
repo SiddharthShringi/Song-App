@@ -145,3 +145,7 @@ color: #4f626b;
 .loginout a, p {
   color: rgba(0,0,0,.5);
 }
+
+label {
+color: white;
+}

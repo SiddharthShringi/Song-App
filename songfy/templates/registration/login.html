@@ -1,9 +1,8 @@
 {% extends 'songfy/base.html' %}
 {% block content %}
-<h2>Login</h2>
-<form method="post">
+<form method="post" novalidate>
   {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
+  {% include 'songfy/bs4_form.html' with form=form %}
+  <button type="submit" class="btn bg-warning btn-primary">Submit</button>
 </form>
 {% endblock %}

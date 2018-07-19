@@ -3,10 +3,8 @@
 <div class="container">
 	<form method="post">
 		{% csrf_token %}
-		<div class="form-group">
-		{{ form.as_p }}
-		</div>
-		<input type="submit" value="Save">
+		{% include 'songfy/bs4_form.html' with form=form %}
+  		<button type="submit" class="btn bg-warning btn-primary">Submit</button>
 	</form>
 </div>
 {% endblock %}
