@@ -6,9 +6,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 
 
+@login_required
 def home(request):
-    songs = Song.objects.all().order_by('title')
-    return render(request, 'songfy/home.html', {'songs': songs})
+    if request.user.is_authenticated:
+        songs = Song.objects.all().filter(user=request.user).order_by('title')
+        return render(request, 'songfy/home.html', {'songs': songs})
 
 
 def song_detail(request, pk):
@@ -16,37 +18,46 @@ def song_detail(request, pk):
     return render(request, 'songfy/song_detail.html', {'song': song})
 
 
+@login_required
 def artist_lst(request):
-    artists = Artist.objects.all().order_by('name')
-    return render(request, 'songfy/artist.html', {'artists': artists})
+    if request.user.is_authenticated:
+        artists = Artist.objects.all().filter(user=request.user).order_by('name')
+        return render(request, 'songfy/artist.html', {'artists': artists})
 
 
+@login_required
 def genre_lst(request):
-    genres = Genre.objects.all().order_by('name')
-    return render(request, 'songfy/genre.html', {'genres': genres})
+    if request.user.is_authenticated:
+        genres = Genre.objects.all().filter(user=request.user).order_by('name')
+        return render(request, 'songfy/genre.html', {'genres': genres})
 
 
+@login_required
 def playlist_lst(request):
-    playlists = Playlist.objects.all().order_by('name')
-    return render(request, 'songfy/playlist.html', {'playlists': playlists})
+    if request.user.is_authenticated:
+        playlists = Playlist.objects.all().filter(user=request.user).order_by('name')
+        return render(request, 'songfy/playlist.html', {'playlists': playlists})
 
 
 def artist_song(request, pk):
-    artist_obj = get_object_or_404(Artist, pk=pk)
-    artists = Artist.objects.all().order_by('name')
-    return render(request, 'songfy/artist_song.html', {'artist_obj': artist_obj, 'artists': artists})
+    if request.user.is_authenticated:
+        artist_obj = get_object_or_404(Artist, pk=pk)
+        artists = Artist.objects.all().filter(user=request.user).order_by('name')
+        return render(request, 'songfy/artist_song.html', {'artist_obj': artist_obj, 'artists': artists})
 
 
 def genre_song(request, pk):
-    genre_obj = get_object_or_404(Genre, pk=pk)
-    genres = Genre.objects.all().order_by('name')
-    return render(request, 'songfy/genre_song.html', {'genre_obj': genre_obj, 'genres': genres})
+    if request.user.is_authenticated:
+        genre_obj = get_object_or_404(Genre, pk=pk)
+        genres = Genre.objects.all().filter(user=request.user).order_by('name')
+        return render(request, 'songfy/genre_song.html', {'genre_obj': genre_obj, 'genres': genres})
 
 
 def playlist_song(request, pk):
-    playlist_obj = get_object_or_404(Playlist, pk=pk)
-    playlists = Playlist.objects.all().order_by('name')
-    return render(request, 'songfy/playlist_song.html', {'playlist_obj': playlist_obj, 'playlists': playlists})
+    if request.user.is_authenticated:
+        playlist_obj = get_object_or_404(Playlist, pk=pk)
+        playlists = Playlist.objects.all().filter(user=request.user).order_by('name')
+        return render(request, 'songfy/playlist_song.html', {'playlist_obj': playlist_obj, 'playlists': playlists})
 
 
 @login_required
@@ -54,6 +65,7 @@ def add_song(request):
     if request.method == 'POST':
         form = SongForm(request.POST)
         if form.is_valid():
+            form.user = request.user
             form.save()
             return redirect('/')
 
