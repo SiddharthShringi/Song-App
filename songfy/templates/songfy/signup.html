@@ -2,7 +2,9 @@
 
 {% block content %}
   <h2>Sign up</h2>
-  {% include 'songfy/bs4_form.html' with form=form %}
-  <button type="submit" class="btn bg-warning btn-primary">Submit</button>
-</form>
+  <form method="post">
+		{% csrf_token %}
+		{% include 'songfy/bs4_form.html' with form=form %}
+  		<button type="submit" class="btn bg-warning btn-primary">Submit</button>
+	</form>
 {% endblock %}
