@@ -65,8 +65,9 @@ def add_song(request):
     if request.method == 'POST':
         form = SongForm(request.POST)
         if form.is_valid():
-            form.user = request.user
-            form.save()
+            song = form.save(commit=False)
+            song.user = request.user
+            song.save()
             return redirect('/')
 
     else:
