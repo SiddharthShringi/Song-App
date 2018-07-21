@@ -8,6 +8,11 @@ class SongForm(forms.ModelForm):
         model = Song
         fields = ('title', 'duration', 'genre', 'artist')
 
+    def __init__(self, user, *args, **kwargs):
+        super(SongForm, self).__init__(*args, **kwargs)
+        self.fields['genre'].queryset = Genre.objects.filter(user=user)
+        self.fields['artist'].queryset = Artist.objects.filter(user=user)
+
 
 class ArtistForm(forms.ModelForm):
 

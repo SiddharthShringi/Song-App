@@ -63,7 +63,7 @@ def playlist_song(request, pk):
 @login_required
 def add_song(request):
     if request.method == 'POST':
-        form = SongForm(request.POST)
+        form = SongForm(request.user, request.POST)
         if form.is_valid():
             song = form.save(commit=False)
             song.user = request.user
@@ -71,7 +71,7 @@ def add_song(request):
             return redirect('/')
 
     else:
-        form = SongForm()
+        form = SongForm(request.user)
     return render(request, 'songfy/add_edit_song.html', {'form': form})
 
 
@@ -93,7 +93,9 @@ def add_artist(request):
     if request.method == "POST":
         form = ArtistForm(request.POST)
         if form.is_valid():
-            form.save()
+            artist = form.save(commit=False)
+            artist.user = request.user
+            artist.save()
             return redirect('/artists')
     else:
         form = ArtistForm()
@@ -105,7 +107,9 @@ def add_genre(request):
     if request.method == "POST":
         form = GenreForm(request.POST)
         if form.is_valid():
-            form.save()
+            genre = form.save(commit=False)
+            genre.user = request.user
+            genre.save()
             return redirect('/genres')
     else:
         form = GenreForm()
@@ -117,7 +121,9 @@ def add_playlist(request):
     if request.method == "POST":
         form = PlaylistForm(request.POST)
         if form.is_valid():
-            form.save()
+            playlist = form.save(commit=False)
+            playlist.user = request.user
+            playlist.save()
             return redirect('/playlists')
     else:
         form = PlaylistForm()
