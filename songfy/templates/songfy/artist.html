@@ -13,10 +13,10 @@
 						</td>
 					</tr>
 				{% endfor %}	
-			</table>
-			<button type="button" class="bg-warning btn btn-primary">
-				<a href="{% url 'songfy:add_artist' %}">Add New</a>
-			</button>
+			</table>				
+			<a href="{% url 'songfy:add_artist' %}">
+				<button type="button" class="bg-warning btn btn-primary">Add New</button>
+			</a>
 		</div>
 </div>
 {% endblock %}
