@@ -7,7 +7,10 @@ from . import viewsets
 app_name = 'songfy'
 
 router = DefaultRouter()
-router.register('/songs', viewsets.SongViewSet)
+router.register('songs', viewsets.SongViewSet)
+router.register('artists', viewsets.ArtistViewSet)
+router.register('genres', viewsets.GenreViewSet)
+router.register('playlists', viewsets.PlaylistViewSet)
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -29,5 +32,5 @@ urlpatterns = [
     path('genre/<int:pk>/delete', views.genre_delete, name='genre_delete'),
     path('playlist/<int:pk>/delete', views.playlist_delete, name='playlist_delete'),
     path('signup', views.signup, name='signup'),
-    path('api', include(router.urls))
+    path('api/', include(router.urls))
 ]
