@@ -1,8 +1,7 @@
-from django.urls import path
-from django.conf.urls import include
-from . import views
+from django.urls import path, include
+from . import views, viewsets
 from rest_framework.routers import DefaultRouter
-from . import viewsets
+
 
 app_name = 'songfy'
 
@@ -32,5 +31,6 @@ urlpatterns = [
     path('genre/<int:pk>/delete', views.genre_delete, name='genre_delete'),
     path('playlist/<int:pk>/delete', views.playlist_delete, name='playlist_delete'),
     path('signup', views.signup, name='signup'),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls')),
 ]
