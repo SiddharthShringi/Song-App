@@ -21,6 +21,8 @@ class GenreSerializer(serializers.ModelSerializer):
 
 
 class PlaylistSerializer(serializers.ModelSerializer):
+    song = serializers.StringRelatedField(many=True)
+
     class Meta:
         model = Playlist
         fields = ('name', 'song', 'user')
