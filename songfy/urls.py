@@ -1,7 +1,13 @@
 from django.urls import path
+from django.conf.urls import include
 from . import views
+from rest_framework.routers import DefaultRouter
+from . import viewsets
 
 app_name = 'songfy'
+
+router = DefaultRouter()
+router.register('/songs', viewsets.SongViewSet)
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -22,5 +28,6 @@ urlpatterns = [
     path('artist/<int:pk>/delete', views.artist_delete, name='artist_delete'),
     path('genre/<int:pk>/delete', views.genre_delete, name='genre_delete'),
     path('playlist/<int:pk>/delete', views.playlist_delete, name='playlist_delete'),
-    path('signup', views.signup, name='signup')
+    path('signup', views.signup, name='signup'),
+    path('api', include(router.urls))
 ]
